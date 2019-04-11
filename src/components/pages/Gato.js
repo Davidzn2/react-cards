@@ -7,12 +7,12 @@ import Axios from 'axios';
 
 class Gatos extends Component {
   state={
-    gatos:[]
+    gato:[]
   }
   componentDidMount(){
-    Axios.get(`https://jsonplaceholder.typicode.com/users`)
+    Axios.get(`https://jsonplaceholder.typicode.com/users/${this.props.match.params.id}`)
       .then(res=>{
-        this.setState({gatos:res.data})
+        this.setState({gato:res.data})
       })
       .catch(function(error) {
         console.log(error);
@@ -24,14 +24,14 @@ class Gatos extends Component {
       <Header />
       <div className="cards">
       <h1>Algunos de los gatos favoritos de todos</h1>
-        {this.state.gatos.map(gato=> 
+        
         <Cards 
-            key={gato.id}
-            name={gato.name}
+            key={this.state.gato.id}
+            name={this.state.gato.name}
             urlFoto="https://i.pinimg.com/originals/df/7b/99/df7b99eb3f68eccefe9f2ca4e3936d8c.png"
-            description={gato.email}
-            idAnimal={`gato/${gato.id}`}
-        />)}
+            description={this.state.gato.email}
+            idAnimal={`${this.state.gato.id}`}
+        />
       
         </div>
         <Footer />

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './styles/cards.css'
-
+import {Link} from 'react-router-dom' 
 class Card extends Component {
    handleClick = () =>{
     alert('Miau')
@@ -12,7 +12,10 @@ class Card extends Component {
         <div className="card-body">
           <h5 className="card-title">{this.props.name}</h5>
           <p className="card-text">{this.props.description}</p>
-          <button onClick={this.handleClick} href="#" className="btn btn-primary">Click for miau</button>
+          <Link to={this.props.idAnimal}>
+            <button  className="btn btn-primary">Click to see more about this cat</button>
+          </Link>
+          
 
         </div>
       </div> 
